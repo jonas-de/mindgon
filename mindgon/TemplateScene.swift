@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  TemplateScene.swift
 //  mindgon
 //
 //  Created by Jonas Andersson on 24.12.17.
@@ -9,12 +9,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class TemplateScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        
+        
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
