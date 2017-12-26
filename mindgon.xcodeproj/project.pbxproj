@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		DDC699D51FEF232200F104F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC699D41FEF232200F104F5 /* AppDelegate.swift */; };
-		DDC699D71FEF232200F104F5 /* MenueScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D61FEF232200F104F5 /* MenueScene.sks */; };
+		DDC699D71FEF232200F104F5 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D61FEF232200F104F5 /* MenuScene.sks */; };
 		DDC699D91FEF232200F104F5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D81FEF232200F104F5 /* Actions.sks */; };
 		DDC699DB1FEF232200F104F5 /* TemplateScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC699DA1FEF232200F104F5 /* TemplateScene.swift */; };
 		DDC699DD1FEF232200F104F5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC699DC1FEF232200F104F5 /* GameViewController.swift */; };
 		DDC699E01FEF232200F104F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC699DE1FEF232200F104F5 /* Main.storyboard */; };
 		DDC699E21FEF232200F104F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC699E11FEF232200F104F5 /* Assets.xcassets */; };
 		DDC699E51FEF232200F104F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC699E31FEF232200F104F5 /* LaunchScreen.storyboard */; };
-		DDE922E51FEFBB5B00181F68 /* MenueScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE922E41FEFBB5B00181F68 /* MenueScene.swift */; };
+		DDE922E51FEFBB5B00181F68 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE922E41FEFBB5B00181F68 /* MenuScene.swift */; };
 		DDE922E71FF15E8B00181F68 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE922E61FF15E8B00181F68 /* Helper.swift */; };
-		DDE922E91FF1D24800181F68 /* MenueCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE922E81FF1D24800181F68 /* MenueCard.swift */; };
+		DDE922E91FF1D24800181F68 /* MenuCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE922E81FF1D24800181F68 /* MenuCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DDC699D11FEF232200F104F5 /* mindgon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mindgon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC699D41FEF232200F104F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDC699D61FEF232200F104F5 /* MenueScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenueScene.sks; sourceTree = "<group>"; };
+		DDC699D61FEF232200F104F5 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		DDC699D81FEF232200F104F5 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		DDC699DA1FEF232200F104F5 /* TemplateScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateScene.swift; sourceTree = "<group>"; };
 		DDC699DC1FEF232200F104F5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -31,9 +31,9 @@
 		DDC699E11FEF232200F104F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDC699E41FEF232200F104F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDC699E61FEF232200F104F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDE922E41FEFBB5B00181F68 /* MenueScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueScene.swift; sourceTree = "<group>"; };
+		DDE922E41FEFBB5B00181F68 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		DDE922E61FF15E8B00181F68 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		DDE922E81FF1D24800181F68 /* MenueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueCard.swift; sourceTree = "<group>"; };
+		DDE922E81FF1D24800181F68 /* MenuCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				DDC699D81FEF232200F104F5 /* Actions.sks */,
-				DDC699D61FEF232200F104F5 /* MenueScene.sks */,
-				DDE922E41FEFBB5B00181F68 /* MenueScene.swift */,
+				DDC699D61FEF232200F104F5 /* MenuScene.sks */,
+				DDE922E41FEFBB5B00181F68 /* MenuScene.swift */,
 				DDC699DC1FEF232200F104F5 /* GameViewController.swift */,
 				DDC699E61FEF232200F104F5 /* Info.plist */,
 				DDC699E31FEF232200F104F5 /* LaunchScreen.storyboard */,
@@ -77,7 +77,7 @@
 				DDC699DA1FEF232200F104F5 /* TemplateScene.swift */,
 				DDC699DE1FEF232200F104F5 /* Main.storyboard */,
 				DDE922E61FF15E8B00181F68 /* Helper.swift */,
-				DDE922E81FF1D24800181F68 /* MenueCard.swift */,
+				DDE922E81FF1D24800181F68 /* MenuCard.swift */,
 			);
 			path = mindgon;
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC699E01FEF232200F104F5 /* Main.storyboard in Resources */,
-				DDC699D71FEF232200F104F5 /* MenueScene.sks in Resources */,
+				DDC699D71FEF232200F104F5 /* MenuScene.sks in Resources */,
 				DDC699E21FEF232200F104F5 /* Assets.xcassets in Resources */,
 				DDC699E51FEF232200F104F5 /* LaunchScreen.storyboard in Resources */,
 				DDC699D91FEF232200F104F5 /* Actions.sks in Resources */,
@@ -176,10 +176,10 @@
 			files = (
 				DDC699DB1FEF232200F104F5 /* TemplateScene.swift in Sources */,
 				DDC699DD1FEF232200F104F5 /* GameViewController.swift in Sources */,
-				DDE922E91FF1D24800181F68 /* MenueCard.swift in Sources */,
+				DDE922E91FF1D24800181F68 /* MenuCard.swift in Sources */,
 				DDE922E71FF15E8B00181F68 /* Helper.swift in Sources */,
 				DDC699D51FEF232200F104F5 /* AppDelegate.swift in Sources */,
-				DDE922E51FEFBB5B00181F68 /* MenueScene.swift in Sources */,
+				DDE922E51FEFBB5B00181F68 /* MenuScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
