@@ -12,8 +12,13 @@ class MenuScene: SKScene {
 
     //MARK: - Attributes
     
+    var cards : [MenuCard]!
+    
     ///the frame in which the content is safely drawn
     var safeframe: CGRect!
+    
+    ///Indicates wheter the settings are open
+    var opensettings = false
     
     ///Day- / Nightmode (updates automatically)
     var lightmode: LightMode! {
@@ -31,8 +36,8 @@ class MenuScene: SKScene {
     var lightmodeindicator: SKSpriteNode!
     var settingsbutton: SKSpriteNode!
     var background: SKSpriteNode!
-    
-    var cards : [MenuCard]!
+    var settingsfield: Settingsmenu!
+    var settingsfocus: SKSpriteNode!
     
     
     //MARK: - Graphics
@@ -43,27 +48,51 @@ class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         safeframe = getsafearea()
-        
+//        var showsafe = SKShapeNode(rect: safeframe)
+//        showsafe.fillColor = .red
+//        self.addChild(showsafe)
         lightmode = LightMode(rawValue: UserDefaults.standard.integer(forKey: "lightmode"))!
+        
+        setupcardstack()
         
         initializenodesfromeditor()
         initializenodesfromcode()
-        
-        setupcardstack()
-        var z: CGFloat = 1
-        for card in cards! {
-            card.zPosition=z
-            
-            z = z+1
-            addChild(card)
-        }
         
     }
     
     
     
     
+    //MARK: - Handle touches
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let topcard = cards[cards.count - 1]
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            //Check if the topcard is touched
+            if (topcard.contains(location) &&
+                topcardtouch == nil &&
+                !opensettings
+                && !topcard.didtouch(touch)) {
+                
+                topcardtouch = touch
+                topcardtouchorigin = location
+            }
+            
+        }
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for _ in touches {
+            
+            
+            
+            
+        }
+    }
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,13 +101,29 @@ class MenuScene: SKScene {
             let location = touch.location(in: self)
             
             //Handle touches on the Lightmodebutton
-            if lightmodeindicator.contains(location) {
+            if (lightmodeindicator.contains(location) && !opensettings) {
                 if lightmode == .day {
                     switchlightmode(to: .night)
                 } else {
                     switchlightmode(to: .day)
                 }
             }
+            
+            //Handle setting
+            if settingsbutton.contains(location) && !opensettings{
+                doopensettings()
+            } else if(opensettings){
+                if (settingsfield.contains(location)){
+                    let loc = self.convert(location, to: settingsfield)
+                    settingsfield.handletouch(loc)
+                } else {
+                    closesettings()
+                }
+                
+            }
+            
+            //Handle play
+            cards[cards.count - 1].didtouchreleased(touch)
             
             //Handle card swipes
             if touch.isEqual(topcardtouch) {
@@ -95,16 +140,15 @@ class MenuScene: SKScene {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         for touch in touches {
-            let location = touch.location(in: self)
-            
-            //Check if the topcard is touched
-            if (cards[cards.count - 1].contains(location) && topcardtouch == nil){
-                topcardtouch = touch
-                topcardtouchorigin = location
-            }
+            cards[cards.count - 1].didtouchreleased(touch)
         }
+        
+        topcardtouch = nil
+        topcardtouchorigin = nil
+        
     }
     
     
@@ -124,7 +168,9 @@ class MenuScene: SKScene {
         
         let changesettingstexture = SKAction.sequence([SKAction.wait(forDuration: 0.1),
                                                        SKAction.animate(with: [settingstextures[lightmode.rawValue]], timePerFrame: 0.2)])
-        
+        for card in cards {
+            card.lightmode = lightmode
+        }
         lightmodeindicator.run(buttoncomplete)
         background.run(recolor)
         settingsbutton.run(changesettingstexture)
@@ -137,6 +183,10 @@ class MenuScene: SKScene {
         //background
         background = childNode(withName: "background") as! SKSpriteNode
         background.color = getnewbackgroundcolor()
+        
+        //settingsfocus
+        settingsfocus = childNode(withName: "settingsfocus") as! SKSpriteNode
+        
     }
     
     
@@ -157,6 +207,7 @@ class MenuScene: SKScene {
                                       size: CGSize(width: Values.settingsbtnsize, height: Values.settingsbtnsize))
         settingsbutton.position = CGPoint(x: safeframe.maxX - Values.settingsbtnsize/2, y: safeframe.maxY - Values.settingsbtnsize/2)
         addChild(settingsbutton)
+        
         
     }
     
@@ -272,10 +323,23 @@ class MenuScene: SKScene {
     
     private func setupcardstack() {
         
-        cards = [MenuCard(cardtyp: .special, safearea: safeframe),
-                 MenuCard(cardtyp: .time, safearea: safeframe),
-                 MenuCard(cardtyp: .normal, safearea: safeframe)]
+        cards = [MenuCard(cardtyp: .special, safearea: safeframe, lm: lightmode),
+                 MenuCard(cardtyp: .time, safearea: safeframe, lm: lightmode),
+                 MenuCard(cardtyp: .normal, safearea: safeframe, lm: lightmode)]
         
+        var z: CGFloat = 1
+        for card in cards! {
+            card.zPosition=z
+            
+            z = z+1
+            addChild(card)
+        }
+        
+        for card in cards {
+            
+            card.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
+                                        SKAction.rotate(toAngle: card.getrotation(), duration: 0.2)]))
+            }
         let topmode = CardTyp(rawValue: UserDefaults.standard.integer(forKey: "menutopcard"))
         
         while(cards[cards.count - 1].typ != topmode) {
@@ -288,6 +352,48 @@ class MenuScene: SKScene {
             cards.append(topcard)
         }
     }
+    
+    private func doopensettings() {
+        
+        settingsfield = Settingsmenu(safeframe: safeframe, lm: lightmode)
+        settingsfield.alpha = 0
+        addChild(settingsfield)
+        
+        let fadeoutbtn = SKAction.fadeOut(withDuration: 0.2)
+        
+        let fadein = SKAction.fadeIn(withDuration: 0.2)
+        
+        let fadehalf = SKAction.fadeAlpha(to: 0.6, duration: 0.2)
+        
+        settingsfocus.color = background.color
+        
+        opensettings = true
+        
+        settingsfocus.run(fadehalf)
+        settingsbutton.run(fadeoutbtn)
+        lightmodeindicator.run(fadeoutbtn)
+        settingsfield.run(fadein, completion: {
+            self.settingsfield.setnodes()
+        })
+        
+    }
+    
+    private func closesettings() {
+        
+        let fadein = SKAction.fadeIn(withDuration: 0.2)
+        let fadeout = SKAction.fadeOut(withDuration: 0.2)
+        
+        opensettings = false
+        
+        settingsfocus.run(fadeout)
+        settingsbutton.run(fadein)
+        lightmodeindicator.run(fadein)
+        settingsfield.run(fadeout, completion: {
+            self.settingsfield.removeFromParent()
+        })
+        
+    }
+    
     
     
     

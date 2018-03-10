@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD2B674F1FF2D8E50012B757 /* Settingsmenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */; };
 		DDC699D51FEF232200F104F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC699D41FEF232200F104F5 /* AppDelegate.swift */; };
 		DDC699D71FEF232200F104F5 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D61FEF232200F104F5 /* MenuScene.sks */; };
 		DDC699D91FEF232200F104F5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D81FEF232200F104F5 /* Actions.sks */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settingsmenu.swift; sourceTree = "<group>"; };
 		DDC699D11FEF232200F104F5 /* mindgon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mindgon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC699D41FEF232200F104F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC699D61FEF232200F104F5 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				DDC699DE1FEF232200F104F5 /* Main.storyboard */,
 				DDE922E61FF15E8B00181F68 /* Helper.swift */,
 				DDE922E81FF1D24800181F68 /* MenuCard.swift */,
+				DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */,
 			);
 			path = mindgon;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC699DB1FEF232200F104F5 /* TemplateScene.swift in Sources */,
+				DD2B674F1FF2D8E50012B757 /* Settingsmenu.swift in Sources */,
 				DDC699DD1FEF232200F104F5 /* GameViewController.swift in Sources */,
 				DDE922E91FF1D24800181F68 /* MenuCard.swift in Sources */,
 				DDE922E71FF15E8B00181F68 /* Helper.swift in Sources */,

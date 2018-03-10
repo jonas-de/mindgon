@@ -42,7 +42,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        firststartsetup()
         
     }
     
@@ -57,7 +57,6 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
             }
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }
@@ -75,6 +74,16 @@ class GameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    private func firststartsetup() {
+        let defs = UserDefaults.standard
+        if (!defs.bool(forKey: "firststartsetup")) {
+            
+            defs.set(true, forKey: "firststartsetup")
+            defs.set(true, forKey: "settingsvibration")
+            
+        }
     }
 
     
