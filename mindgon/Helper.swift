@@ -8,7 +8,15 @@
 
 import SpriteKit
 
+//MARK: - Enumerations
 
+/// All possible gamemodes
+enum GameTyp: Int {
+    case normal, time, monochrom, special
+}
+
+
+//MARK: - Extensions
 
 extension SKScene {
     
@@ -47,8 +55,7 @@ extension SKScene {
     }
 }
 
-
-public extension CGFloat {
+extension CGFloat {
     
     /// Randomly returns either 1.0 or -1.0.
     public static var randomSign: CGFloat {
@@ -67,5 +74,10 @@ public extension CGFloat {
     public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
         return CGFloat.random * (max - min) + min
     }
+}
+
+extension Notification.Name {
+    static let showmenu = Notification.Name("showmenu")
+    static let startgame = Notification.Name("startgame")
 }
 

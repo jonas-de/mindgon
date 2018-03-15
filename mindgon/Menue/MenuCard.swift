@@ -9,12 +9,7 @@
 import SpriteKit
 
 
-//MARK: - Enumerations
 
-/// All possible gamemodes
-enum CardTyp: Int {
-    case normal, time, monochrom, special
-}
 
 
 /// A spritenode to choose the gamemode
@@ -24,7 +19,7 @@ class MenuCard: SKSpriteNode {
     //MARK: - Attributes
     
     ///The gamemodus that makes the difference between the cards
-    var typ: CardTyp!
+    var typ: GameTyp!
     
     ///saves the touch of the playbutton of the topcard
     var playbtntouch: UITouch?
@@ -52,7 +47,7 @@ class MenuCard: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(cardtyp: CardTyp, safearea: CGRect) {
+    init(cardtyp: GameTyp, safearea: CGRect) {
         
         typ = cardtyp
         super.init(texture: SKTexture(imageNamed: "kartemenu"),
@@ -185,8 +180,13 @@ class MenuCard: SKSpriteNode {
             let normal = SKAction.scale(to: 1, duration: 0.1)
             playbtn.run(normal)
             playbtntouch = nil
+            
             if (playbtn.contains(loc)) {
-                print("play \(gettitle())")
+                
+                let data: [String: Int] = ["typ": typ.rawValue]
+                print("post not for \(typ!)")
+                NotificationCenter.default.post(name: .startgame, object: self, userInfo: data)
+                
             }
         }
     }

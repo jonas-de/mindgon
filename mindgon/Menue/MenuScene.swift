@@ -12,6 +12,7 @@ class MenuScene: SKScene {
 
     //MARK: - Attributes
     
+    ///the cardstack as an array
     var cards : [MenuCard]!
     
     ///the frame in which the content is safely drawn
@@ -29,7 +30,6 @@ class MenuScene: SKScene {
     //MARK: - Nodes
     
     var settingsbutton: SKSpriteNode!
-    var background: SKSpriteNode!
     var settingsfield: Settingsmenu!
     var settingsfocus: SKSpriteNode!
     
@@ -44,7 +44,6 @@ class MenuScene: SKScene {
         safeframe = getsafearea()
         //showsafeframe()
 
-        initializenodesfromeditor()
         initializenodesfromcode()
         
         setupcardstack()
@@ -52,16 +51,6 @@ class MenuScene: SKScene {
     
     
     //MARK: - Custom initializer
-    
-    ///Setups the nodes created in MenuScene.sks
-    private func initializenodesfromeditor(){
-        //background
-        background = childNode(withName: "background") as! SKSpriteNode
-        background.color = #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1)
-        
-        //settingsfocus
-        settingsfocus = childNode(withName: "settingsfocus") as! SKSpriteNode
-    }
     
     ///Creates and setups the nodes programmatically
     private func initializenodesfromcode(){
@@ -74,11 +63,13 @@ class MenuScene: SKScene {
         settingsbutton.position = CGPoint(x: safeframe.maxX - safeframe.width * settingsfactor * 0.5,
                                           y: safeframe.maxY - safeframe.width * settingsfactor * 0.5)
         addChild(settingsbutton)
+        
+        //Settingsfocus
+        settingsfocus = SKSpriteNode(color: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1), size: self.size)
+        settingsfocus.zPosition = 9
     }
     
     
-    
-
     //MARK: - Handle touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -236,7 +227,7 @@ class MenuScene: SKScene {
             }
         
         //Change the stack so that the last saved topcard is topcard again
-        let topmode = CardTyp(rawValue: UserDefaults.standard.integer(forKey: "menutopcard"))
+        let topmode = GameTyp(rawValue: UserDefaults.standard.integer(forKey: "menutopcard"))
         while(cards[cards.count - 1].typ != topmode) {
             let topcard = cards.remove(at: 0)
             topcard.zPosition = cards[cards.count - 1].zPosition
