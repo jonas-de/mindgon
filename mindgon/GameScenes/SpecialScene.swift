@@ -9,6 +9,25 @@
 import UIKit
 import SpriteKit
 
-class SpecialScene: SKScene {
+class SpecialScene: GameScene {
 
+    //MARK: - Attributes
+    
+    
+    //MARK: - Nodes
+    
+    
+    
+    //MARK: - Overridden functions
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        highscore = UserDefaults.standard.integer(forKey: "specialhighscore")
+        
+    }
+    
+    //MARK: - Custom initializer
+    
+    
+    
 }

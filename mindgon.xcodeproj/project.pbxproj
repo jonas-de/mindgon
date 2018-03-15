@@ -16,6 +16,8 @@
 		DD951901205AD2C300F805E8 /* TimeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DD951900205AD2C300F805E8 /* TimeScene.sks */; };
 		DDC4AB6C205ADBC500E7FE85 /* MonoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC4AB6B205ADBC500E7FE85 /* MonoScene.sks */; };
 		DDC4AB6E205ADBDD00E7FE85 /* SpecialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC4AB6D205ADBDD00E7FE85 /* SpecialScene.sks */; };
+		DDC4AB70205AE04500E7FE85 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4AB6F205AE04500E7FE85 /* GameScene.swift */; };
+		DDC4AB73205AE2FE00E7FE85 /* StartBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC4AB72205AE2FE00E7FE85 /* StartBanner.swift */; };
 		DDC699D51FEF232200F104F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC699D41FEF232200F104F5 /* AppDelegate.swift */; };
 		DDC699D71FEF232200F104F5 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D61FEF232200F104F5 /* MenuScene.sks */; };
 		DDC699D91FEF232200F104F5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DDC699D81FEF232200F104F5 /* Actions.sks */; };
@@ -39,6 +41,8 @@
 		DD951900205AD2C300F805E8 /* TimeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TimeScene.sks; sourceTree = "<group>"; };
 		DDC4AB6B205ADBC500E7FE85 /* MonoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MonoScene.sks; sourceTree = "<group>"; };
 		DDC4AB6D205ADBDD00E7FE85 /* SpecialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpecialScene.sks; sourceTree = "<group>"; };
+		DDC4AB6F205AE04500E7FE85 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		DDC4AB72205AE2FE00E7FE85 /* StartBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBanner.swift; sourceTree = "<group>"; };
 		DDC699D11FEF232200F104F5 /* mindgon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mindgon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC699D41FEF232200F104F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC699D61FEF232200F104F5 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 		DD9518F5205ACB7500F805E8 /* GameScenes */ = {
 			isa = PBXGroup;
 			children = (
+				DDC4AB71205AE2E000E7FE85 /* Game */,
 				DD9518F6205ACBB200F805E8 /* NormalScene.swift */,
 				DD9518FE205AD25A00F805E8 /* NormalScene.sks */,
 				DD9518F8205ACBBF00F805E8 /* TimeScene.swift */,
@@ -89,6 +94,15 @@
 				DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */,
 			);
 			path = Menue;
+			sourceTree = "<group>";
+		};
+		DDC4AB71205AE2E000E7FE85 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				DDC4AB6F205AE04500E7FE85 /* GameScene.swift */,
+				DDC4AB72205AE2FE00E7FE85 /* StartBanner.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		DDC699C81FEF232200F104F5 = {
@@ -226,7 +240,9 @@
 				DD2B674F1FF2D8E50012B757 /* Settingsmenu.swift in Sources */,
 				DD9518FD205ACC0300F805E8 /* SpecialScene.swift in Sources */,
 				DDC699DD1FEF232200F104F5 /* GameViewController.swift in Sources */,
+				DDC4AB73205AE2FE00E7FE85 /* StartBanner.swift in Sources */,
 				DD9518F7205ACBB200F805E8 /* NormalScene.swift in Sources */,
+				DDC4AB70205AE04500E7FE85 /* GameScene.swift in Sources */,
 				DDE922E91FF1D24800181F68 /* MenuCard.swift in Sources */,
 				DD9518F9205ACBBF00F805E8 /* TimeScene.swift in Sources */,
 				DDE922E71FF15E8B00181F68 /* Helper.swift in Sources */,

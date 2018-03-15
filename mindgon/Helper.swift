@@ -15,6 +15,11 @@ enum GameTyp: Int {
     case normal, time, monochrom, special
 }
 
+///Represents the state of a current game
+enum GameState: Int {
+    case start, running, end
+}
+
 
 //MARK: - Extensions
 

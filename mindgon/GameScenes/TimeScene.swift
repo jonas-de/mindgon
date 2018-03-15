@@ -9,6 +9,25 @@
 import UIKit
 import SpriteKit
 
-class TimeScene: SKScene {
-
+class TimeScene: GameScene {
+    
+    //MARK: - Attributes
+    
+    
+    //MARK: - Nodes
+    
+    
+    
+    //MARK: - Overridden functions
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        highscore = UserDefaults.standard.integer(forKey: "timehighscore")
+        
+    }
+    
+    //MARK: - Custom initializer
+    
+    
+    
 }
