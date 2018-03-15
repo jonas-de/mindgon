@@ -67,6 +67,8 @@ class MenuScene: SKScene {
         //Settingsfocus
         settingsfocus = SKSpriteNode(color: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1), size: self.size)
         settingsfocus.zPosition = 9
+        settingsfocus.alpha = 0
+        addChild(settingsfocus)
     }
     
     
@@ -251,7 +253,7 @@ class MenuScene: SKScene {
         opensettings = true
         
         settingsbutton.run(SKAction.rotate(byAngle: -0.6, duration: 0.2))
-        settingsfocus.run(SKAction.fadeAlpha(to: 0.6, duration: 0.2))
+        settingsfocus.run(SKAction.fadeAlpha(to: 0.75, duration: 0.2))
         settingsfield.run(SKAction.fadeIn(withDuration: 0.2), completion: {
             self.settingsfield.shownodes()
         })
