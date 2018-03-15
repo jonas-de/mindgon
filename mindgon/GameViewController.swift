@@ -8,22 +8,14 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
-
-enum LightMode: Int {
-    case day, night
-}
-
 
 class GameViewController: UIViewController {
 
+    
     //MARK: - Attributes
     
     ///the standard UserDefaultsObject
     let defaults = UserDefaults.standard
-    
-    
-    
     
     
     //MARK: - Overridden attributes
@@ -34,6 +26,10 @@ class GameViewController: UIViewController {
     
     override var shouldAutorotate: Bool {
         return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .allButUpsideDown
     }
     
     
@@ -51,31 +47,28 @@ class GameViewController: UIViewController {
             
             // Load the SKScene from 'MenuScene.sks'
             if let scene = MenuScene(fileNamed: "MenuScene") {
-                // Set the scale mode to scale to fit the window
+                
+                //Setup the scene
+                scene.size = view.bounds.size
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene
                 view.presentScene(scene)
             }
-            view.showsFPS = true
-            view.showsNodeCount = true
+            
+            //Debug
+            let shoulddebug: Bool = true
+            view.showsFPS = shoulddebug
+            view.showsNodeCount = shoulddebug
+            view.showsDrawCount = shoulddebug
+            view.showsQuadCount = shoulddebug
         }
     }
-
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
     
+    //MARK: - Custom functions
+    
+    ///Initializes the settings when the app is started the first time
     private func firststartsetup() {
         let defs = UserDefaults.standard
         if (!defs.bool(forKey: "firststartsetup")) {
@@ -85,6 +78,4 @@ class GameViewController: UIViewController {
             
         }
     }
-
-    
 }

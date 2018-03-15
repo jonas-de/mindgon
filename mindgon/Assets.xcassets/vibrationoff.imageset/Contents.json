@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "sonne50.png",
+      "filename" : "vibrateoff300.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "sonne100.png",
+      "filename" : "vibrateoff450.png",
       "scale" : "3x"
     }
   ],

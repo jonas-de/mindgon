@@ -9,23 +9,6 @@
 import SpriteKit
 
 
-struct Values {
-    
-    ///The minimum distance between content and the rim of the display
-    static let mininset: CGFloat = 10
-    
-    ///The size of the lightmodeswitch
-    static let lightmodesize: CGFloat = 60
-    
-    ///The size of the settingsbutton
-    static let settingsbtnsize: CGFloat = 65
-    
-    ///The width of the gamemodecards
-    static let cardwith: CGFloat = 600
-    
-    
-}
-
 
 extension SKScene {
     
@@ -33,28 +16,38 @@ extension SKScene {
         
         let origin = self.convertPoint(toView: CGPoint(x: 0, y: 0))
         var ins = self.view!.safeAreaInsets
-        if (ins.left < Values.mininset){
-            ins.left = Values.mininset
+        
+        let insetminimum: CGFloat = 10
+        
+        if (ins.left < insetminimum){
+            ins.left = insetminimum
         }
-        if (ins.right < Values.mininset){
-            ins.right = Values.mininset
+        if (ins.right < insetminimum){
+            ins.right = insetminimum
         }
-        if (ins.top < Values.mininset){
-            ins.top = Values.mininset
+        
+        ins.top += insetminimum
+        
+        if (ins.bottom < insetminimum){
+            ins.bottom = insetminimum
         }
-        if (ins.bottom < Values.mininset){
-            ins.bottom = Values.mininset
-        }
-        let saferectanchor = CGPoint(x: self.convertPoint(fromView: CGPoint(x: ins.left, y: origin.y)).x,
-                                     y: self.convertPoint(fromView: CGPoint(x: origin.x, y: ins.top)).y)
-        let saferectanchorinsets = CGPoint(x: self.convertPoint(fromView: CGPoint(x: view!.frame.width - ins.right, y: origin.y)).x,
-                                           y: self.convertPoint(fromView: CGPoint(x: origin.x, y: view!.frame.height - ins.bottom)).y)
+        let saferectanchor = CGPoint(x: self.convertPoint(fromView: CGPoint(x: ins.left,
+                                                                            y: origin.y)).x,
+                                     y: self.convertPoint(fromView: CGPoint(x: origin.x,
+                                                                            y: ins.top)).y)
+        
+        let saferectanchorinsets = CGPoint(x: self.convertPoint(fromView: CGPoint(x: view!.frame.width - ins.right,
+                                                                                  y: origin.y)).x,
+                                           y: self.convertPoint(fromView: CGPoint(x: origin.x,
+                                                                                  y: view!.frame.height - ins.bottom)).y)
         return CGRect(x: saferectanchor.x,
                       y: saferectanchor.y,
                       width: saferectanchorinsets.x - saferectanchor.x,
                       height: saferectanchorinsets.y - saferectanchor.y)
     }
 }
+
+
 public extension CGFloat {
     
     /// Randomly returns either 1.0 or -1.0.

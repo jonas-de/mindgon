@@ -49,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDAA4683205AB41C00F924C3 /* Menue */ = {
+			isa = PBXGroup;
+			children = (
+				DDC699D61FEF232200F104F5 /* MenuScene.sks */,
+				DDE922E41FEFBB5B00181F68 /* MenuScene.swift */,
+				DDE922E81FF1D24800181F68 /* MenuCard.swift */,
+				DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */,
+			);
+			path = Menue;
+			sourceTree = "<group>";
+		};
 		DDC699C81FEF232200F104F5 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +79,8 @@
 		DDC699D31FEF232200F104F5 /* mindgon */ = {
 			isa = PBXGroup;
 			children = (
+				DDAA4683205AB41C00F924C3 /* Menue */,
 				DDC699D81FEF232200F104F5 /* Actions.sks */,
-				DDC699D61FEF232200F104F5 /* MenuScene.sks */,
-				DDE922E41FEFBB5B00181F68 /* MenuScene.swift */,
 				DDC699DC1FEF232200F104F5 /* GameViewController.swift */,
 				DDC699E61FEF232200F104F5 /* Info.plist */,
 				DDC699E31FEF232200F104F5 /* LaunchScreen.storyboard */,
@@ -79,8 +89,6 @@
 				DDC699DA1FEF232200F104F5 /* TemplateScene.swift */,
 				DDC699DE1FEF232200F104F5 /* Main.storyboard */,
 				DDE922E61FF15E8B00181F68 /* Helper.swift */,
-				DDE922E81FF1D24800181F68 /* MenuCard.swift */,
-				DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */,
 			);
 			path = mindgon;
 			sourceTree = "<group>";
@@ -327,7 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.bambuzleapps.mindgon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -342,7 +350,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.bambuzleapps.mindgon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
