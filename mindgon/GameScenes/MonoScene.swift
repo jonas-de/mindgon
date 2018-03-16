@@ -12,7 +12,7 @@ import SpriteKit
 class MonoScene: GameScene {
 
     //MARK: - Attributes
-    
+    let gametyp: GameTyp = .monochrom
     
     //MARK: - Nodes
     
@@ -22,7 +22,7 @@ class MonoScene: GameScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        highscore = UserDefaults.standard.integer(forKey: "monohighscore")
+        highscore = UserDefaults.standard.integer(forKey: "\(Helper.getgametypid(typ: gametyp))highscore")
         
     }
     

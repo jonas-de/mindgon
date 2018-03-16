@@ -24,12 +24,15 @@ class MenuCard: SKSpriteNode {
     ///saves the touch of the playbutton of the topcard
     var playbtntouch: UITouch?
     
+    var bestscore = 0
+    var lastscore = 0
+    
     
     //MARK: - Nodes
     
     let title = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
-    let last = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
     let best = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
+    let last = SKLabelNode(fontNamed: "HelveticaNeue-Bold")
     var rim: SKShapeNode!
     var image: SKSpriteNode!
     var playbtn: SKSpriteNode!
@@ -50,7 +53,7 @@ class MenuCard: SKSpriteNode {
     init(cardtyp: GameTyp, safearea: CGRect) {
         
         typ = cardtyp
-        super.init(texture: SKTexture(imageNamed: "kartemenu"),
+        super.init(texture: gettexture(),
                    color: .clear,
                    size: CGSize(width: 0.85 * safearea.width,
                                 height: 0.85 * safearea.width * 1.5))
@@ -59,18 +62,59 @@ class MenuCard: SKSpriteNode {
         setuprim()
         setupplaybtn()
         setupimage()
+        setuplabels()
         
-        title.fontSize = 35
-        title.fontColor = .white
-        title.text = gettitle()
-        title.horizontalAlignmentMode = .left
-        title.position = CGPoint(x: -self.size.width/2 + self.size.width * 0.08, y: (self.frame.height/2) - self.size.height * 0.11)
-        addChild(title)
+        
         
     }
     
     
+    
     //MARK: - Setup
+    
+    
+    func updatescore() {
+        
+        let defs = UserDefaults.standard
+        
+        bestscore = defs.integer(forKey: "\(Helper.getgametypid(typ: typ))bestscore")
+        lastscore = defs.integer(forKey: "\(Helper.getgametypid(typ: typ))highscore")
+        
+    }
+    
+    
+    
+    private func setuplabels() {
+        updatescore()
+        
+        //Title
+        title.fontSize = 0.12 * self.size.width
+        title.fontColor = .white
+        title.text = gettitle()
+        title.horizontalAlignmentMode = .left
+        title.position = CGPoint(x: -self.size.width/2 + self.size.width * 0.08,
+                                 y: (self.size.height/2) - self.size.height * 0.11)
+        addChild(title)
+        
+        //best-Label
+        best.fontSize = 0.1 * self.size.width
+        best.fontColor = .white
+        best.text = "\(bestscore)"
+        best.horizontalAlignmentMode = .left
+        best.position = CGPoint(x: -self.size.width/2 + self.size.width * 0.2125,
+                                y: (self.size.height/2) - self.size.height * 0.211)
+        addChild(best)
+        
+        //last-Label
+        last.fontSize = 0.1 * self.size.width
+        last.fontColor = .white
+        last.text = "\(lastscore)"
+        last.horizontalAlignmentMode = .left
+        last.position = CGPoint(x: -self.size.width/2 + self.size.width * 0.5225,
+                                y: (self.size.height/2) - self.size.height * 0.21)
+        addChild(last)
+        
+    }
     
     ///setups the nodes to show the rim
     private func setuprim() {
@@ -127,6 +171,9 @@ class MenuCard: SKSpriteNode {
     
     ///return the texture of the card depending on the cardtyp
     private func gettexture() -> SKTexture {
+        if (UserDefaults.standard.bool(forKey: "\(Helper.getgametypid(typ: typ))newhighscore")) {
+            return newhightexture
+        }
         return cardtexture
     }
     
@@ -184,7 +231,6 @@ class MenuCard: SKSpriteNode {
             if (playbtn.contains(loc)) {
                 
                 let data: [String: Int] = ["typ": typ.rawValue]
-                print("post not for \(typ!)")
                 NotificationCenter.default.post(name: .startgame, object: self, userInfo: data)
                 
             }

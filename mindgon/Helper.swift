@@ -20,6 +20,23 @@ enum GameState: Int {
     case start, running, end
 }
 
+//MARK: - Classes
+
+class Helper {
+    static func getgametypid(typ: GameTyp) -> String {
+        switch typ {
+        case .normal:
+            return "normal"
+        case .time:
+            return "time"
+        case .monochrom:
+            return "monochrom"
+        case .special:
+            return "special"
+        }
+    }
+}
+
 
 //MARK: - Extensions
 

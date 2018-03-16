@@ -12,7 +12,7 @@ import SpriteKit
 class TimeScene: GameScene {
     
     //MARK: - Attributes
-    
+    let gametyp: GameTyp = .time
     
     //MARK: - Nodes
     
@@ -22,7 +22,7 @@ class TimeScene: GameScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        highscore = UserDefaults.standard.integer(forKey: "timehighscore")
+        highscore = UserDefaults.standard.integer(forKey: "\(Helper.getgametypid(typ: gametyp))highscore")
         
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DD2B674F1FF2D8E50012B757 /* Settingsmenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */; };
+		DD7B3E87205B2AFA00E4419D /* GameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B3E86205B2AFA00E4419D /* GameHelper.swift */; };
 		DD9518F7205ACBB200F805E8 /* NormalScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9518F6205ACBB200F805E8 /* NormalScene.swift */; };
 		DD9518F9205ACBBF00F805E8 /* TimeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9518F8205ACBBF00F805E8 /* TimeScene.swift */; };
 		DD9518FB205ACBE000F805E8 /* MonoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9518FA205ACBE000F805E8 /* MonoScene.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		DD2B674E1FF2D8E50012B757 /* Settingsmenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settingsmenu.swift; sourceTree = "<group>"; };
+		DD7B3E86205B2AFA00E4419D /* GameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHelper.swift; sourceTree = "<group>"; };
 		DD9518F6205ACBB200F805E8 /* NormalScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalScene.swift; sourceTree = "<group>"; };
 		DD9518F8205ACBBF00F805E8 /* TimeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeScene.swift; sourceTree = "<group>"; };
 		DD9518FA205ACBE000F805E8 /* MonoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoScene.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				DDC4AB6F205AE04500E7FE85 /* GameScene.swift */,
 				DDC4AB72205AE2FE00E7FE85 /* StartBanner.swift */,
+				DD7B3E86205B2AFA00E4419D /* GameHelper.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				DD2B674F1FF2D8E50012B757 /* Settingsmenu.swift in Sources */,
 				DD9518FD205ACC0300F805E8 /* SpecialScene.swift in Sources */,
 				DDC699DD1FEF232200F104F5 /* GameViewController.swift in Sources */,
+				DD7B3E87205B2AFA00E4419D /* GameHelper.swift in Sources */,
 				DDC4AB73205AE2FE00E7FE85 /* StartBanner.swift in Sources */,
 				DD9518F7205ACBB200F805E8 /* NormalScene.swift in Sources */,
 				DDC4AB70205AE04500E7FE85 /* GameScene.swift in Sources */,

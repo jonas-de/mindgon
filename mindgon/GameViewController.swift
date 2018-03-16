@@ -136,7 +136,6 @@ class GameViewController: UIViewController {
     }
     
     @objc func startgame(_ notification: Notification) {
-        print("start game")
         
         var typ: GameTyp = .normal
         if let data = notification.userInfo {
@@ -145,7 +144,6 @@ class GameViewController: UIViewController {
         
         print(typ)
         if let scene = getscene(forgametyp: typ) {
-            print("hasscene")
             if let view = self.view as! SKView? {
                 let transition = SKTransition.fade(with: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1) , duration: 1)
                 

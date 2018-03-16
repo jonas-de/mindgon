@@ -12,7 +12,7 @@ import SpriteKit
 class SpecialScene: GameScene {
 
     //MARK: - Attributes
-    
+    let gametyp: GameTyp = .special
     
     //MARK: - Nodes
     
@@ -22,7 +22,7 @@ class SpecialScene: GameScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        highscore = UserDefaults.standard.integer(forKey: "specialhighscore")
+        highscore = UserDefaults.standard.integer(forKey: "\(Helper.getgametypid(typ: gametyp))highscore")
         
     }
     

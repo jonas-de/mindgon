@@ -9,30 +9,25 @@
 import UIKit
 import SpriteKit
 
-class StartBanner: SKShapeNode {
+class StartBanner: SKSpriteNode {
 
     var background: SKShapeNode!
     var texttopline: SKLabelNode!
     var textlowline: SKLabelNode!
-    var touched: Bool!
     
     
     init(scene: GameScene) {
-        super.init()
         
-        self.path = CGPath(rect: CGRect(x: -0.5 * scene.size.width,
-                                        y: -scene.size.width * 0.4,
-                                        width: scene.size.width,
-                                        height: scene.size.width * 0.4),
-                           transform: nil)
-        self.strokeColor = .clear
-        self.fillColor = .clear
+        super.init(texture: nil, color: .clear, size: CGSize(width: scene.size.width,
+                                                           height: scene.size.width * 0.4))
+        self.position = CGPoint(x: 0, y: -scene.size.width * 0.2)
         
-        touched = false
         
         //Background
-        background = SKShapeNode(path: self.path!)
-        background.position = .zero
+        background = SKShapeNode(rect: CGRect(x: -scene.size.width / 2,
+                                              y: -scene.size.width * 0.2,
+                                              width: self.size.width,
+                                              height: self.size.height))
         background.strokeColor = .clear
         background.fillColor = .red
         background.alpha = 0.5
@@ -47,10 +42,10 @@ class StartBanner: SKShapeNode {
         
         textlowline = texttopline.copy() as! SKLabelNode
         
-        texttopline.position = CGPoint(x: 0, y: -scene.size.width * 0.12)
+        texttopline.position = CGPoint(x: 0, y: scene.size.width * 0.08)
         texttopline.text = "TIPPEN ZUM"
         
-        textlowline.position = CGPoint(x: 0, y: -scene.size.width * 0.28)
+        textlowline.position = CGPoint(x: 0, y: -scene.size.width * 0.08)
         textlowline.text = "STARTEN"
         
         addChild(texttopline)
@@ -59,6 +54,15 @@ class StartBanner: SKShapeNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func close() {        
+        let fadeout = SKAction.fadeOut(withDuration: 0.05)
+        fadeout.timingMode = .easeOut
+        
+        texttopline.run(fadeout)
+        textlowline.run(fadeout)
     }
     
     
