@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  mindgon
+
+  Created by Jonas Andersson on 24.03.18.
+  Copyright © 2018 bambuzleapps. All rights reserved.
+*/
+
+
+//MARK: -
+//MARK: Titles
+
+"normaltitle" = "NORMAL";
+"timetitle" = "AUF ZEIT";
+"monochrometitle" = "MONOCHROM";
+"specialtitle" = "SPEZIAL";

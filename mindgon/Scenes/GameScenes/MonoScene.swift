@@ -1,5 +1,5 @@
 //
-//  TimeScene.swift
+//  MonoScene.swift
 //  mindgon
 //
 //  Created by Jonas Andersson on 15.03.18.
@@ -9,10 +9,10 @@
 import UIKit
 import SpriteKit
 
-class TimeScene: GameScene {
-    
+class MonoScene: GameScene {
+
     //MARK: - Attributes
-    let gametyp: GameTyp = .time
+    let gametyp: GameType = .monochrom
     
     //MARK: - Nodes
     
@@ -22,7 +22,7 @@ class TimeScene: GameScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        highscore = UserDefaults.standard.integer(forKey: "\(Helper.getgametypid(typ: gametyp))highscore")
+        highscore = UserDefaults.standard.integer(forKey: "\(gametyp.id)highscore")
         
     }
     

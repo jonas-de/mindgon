@@ -12,12 +12,6 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     
-    //MARK: - Attributes
-    
-    ///the standard UserDefaultsObject
-    let defaults = UserDefaults.standard
-    
-    
     //MARK: - Overridden attributes
     
     override var prefersStatusBarHidden: Bool {
@@ -34,11 +28,21 @@ class GameViewController: UIViewController {
     
     
     //MARK: - Scenes
-    lazy var menu = MenuScene(fileNamed: "MenuScene")
-    lazy var normalgame = NormalScene(fileNamed: "NormalScene")
-    lazy var timegame = TimeScene(fileNamed: "TimeScene")
-    lazy var monogame = MonoScene(fileNamed: "MonoScene")
-    lazy var specialgame = SpecialScene(fileNamed: "SpecialScene")
+    
+    /// the scene that shows the menu
+    lazy var menu = MenuScene(size: CGSize.zero)
+    
+    /// scene: `Gametyp.normal`
+    lazy var normalgame = NormalScene(size: CGSize.zero)
+    
+    /// scene `Gametyp.time`
+    lazy var timegame = TimeScene(size: CGSize.zero)
+    
+    /// scene `Gametyp.monochrom`
+    lazy var monogame = MonoScene(size: CGSize.zero)
+    
+    /// scene `Gametyp.special`
+    lazy var specialgame = SpecialScene(size: CGSize.zero)
     
     
     //MARK: - Overridden methods
@@ -47,35 +51,30 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         firststartsetup()
-        
     }
     
     override func viewWillLayoutSubviews() {
         if let view = self.view as! SKView? {
             
-            // Load the SKScene from 'MenuScene.sks'
-            if let scene = menu {
-                
-                //Setup the scene
-                scene.size = view.bounds.size
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+            //Setup the scene
+            menu.size = view.bounds.size
+            menu.scaleMode = .aspectFill
+            
+            // Present the scene
+            view.presentScene(menu)
             
             //Debug
             let shoulddebug: Bool = true
             view.showsFPS = shoulddebug
             view.showsNodeCount = shoulddebug
-            view.showsDrawCount = shoulddebug
-            view.showsQuadCount = shoulddebug
+            //view.showsDrawCount = shoulddebug
+            //view.showsQuadCount = shoulddebug
+            
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        print("add observers")
         NotificationCenter.default.addObserver(self, selector: #selector(showmenu(_:)), name: .showmenu, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startgame(_:)), name: .startgame, object: nil)
         
@@ -90,7 +89,10 @@ class GameViewController: UIViewController {
     
     //MARK: - Custom functions
     
-    ///Initializes the settings when the app is started the first time
+    /**
+    Setup when the app is started the first time
+    - Settings (Vibration)
+    */
     private func firststartsetup() {
         let defs = UserDefaults.standard
         if (!defs.bool(forKey: "firststartsetup")) {
@@ -101,7 +103,11 @@ class GameViewController: UIViewController {
         }
     }
     
-    private func getscene(forgametyp typ: GameTyp) -> SKScene? {
+    /**
+    - Parameter gametype: GameTyp to find the correct scene
+    - Returns:  The scene according to the parameter
+    */
+    private func getscene(forgametyp typ: GameType) -> SKScene {
         
         switch (typ) {
         case .normal:
@@ -117,42 +123,52 @@ class GameViewController: UIViewController {
     }
     
     
-    //MARK: - Handle scenes
+    //MARK: - Scenetransitions
     
+    /**
+     called when a scene notifies the Controller that the menu should appear
+     - performs a transition to the menu
+     - Parameter notification: The object created by the sender to transport information
+     
+     
+    */
     @objc func showmenu(_ notification: Notification) {
-        if let scene = menu {
+        
+        //checks if the view can be represent a SKView
+        if let view = self.view as! SKView? {
             
-            if let view = self.view as! SKView? {
-                let transition = SKTransition.fade(with: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1), duration: 1)
+            //checks if the menu-scene is already presented
+            if view.scene != menu {
                 
                 //Setup the scene
-                scene.size = view.bounds.size
-                scene.scaleMode = .aspectFill
+                menu.size = view.bounds.size
+                menu.scaleMode = .aspectFill
                 
-                view.presentScene(scene, transition: transition)
+                let transition = SKTransition.fade(with: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1), duration: 1)
+                view.presentScene(menu, transition: transition)
                 
             }
+            
         }
+        
     }
     
     @objc func startgame(_ notification: Notification) {
         
-        var typ: GameTyp = .normal
+        var typ: GameType = .normal
         if let data = notification.userInfo {
-            typ = GameTyp(rawValue: (data["typ"] as? Int ?? 0) ) ?? .normal
+            typ = GameType(rawValue: (data["gametype"] as? Int ?? 0) ) ?? .normal
         }
         
-        print(typ)
-        if let scene = getscene(forgametyp: typ) {
-            if let view = self.view as! SKView? {
-                let transition = SKTransition.fade(with: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1) , duration: 1)
-                
-                //Setup the scene
-                scene.size = view.bounds.size
-                scene.scaleMode = .aspectFill
-                
-                view.presentScene(scene, transition: transition)
-            }
+        if let view = self.view as! SKView? {
+            let transition = SKTransition.fade(with: #colorLiteral(red: 0.1180000007, green: 0.1570000052, blue: 0.2349999994, alpha: 1) , duration: 1)
+            
+            //Setup the scene
+            let scene = getscene(forgametyp: typ)
+            scene.size = view.bounds.size
+            scene.scaleMode = .aspectFill
+            
+            view.presentScene(scene, transition: transition)
         }
     }
 }
