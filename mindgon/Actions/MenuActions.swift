@@ -21,7 +21,7 @@ extension MenuScene {
     
     func animateSettingsButton() -> SKAction {
         
-        return SKAction.rotate(byAngle: -0.6,
+        return SKAction.rotate(byAngle: -0.78,
                                duration: settingsAnimationDuration)
     
     }
@@ -86,8 +86,8 @@ extension MenuScene {
         
         //TODO: GET Extrempoints of cardstack
         
-        return SKAction.moveBy(x: getfactor(0.04, max: 30) + topCard.size.width,
-                               y: getfactor(0.08, max: 60),
+        return SKAction.moveBy(x: getFactor(0.04, max: 30) + topCard.size.width,
+                               y: getFactor(0.08, max: 60),
                                duration: cardAnimationDuration)
         
     }
@@ -100,19 +100,19 @@ extension MenuScene {
         let scaleRight = SKAction.scale(to: cardAnimationScale,
                                         duration: cardAnimationDuration)
         
-        return SKAction.sequence([turnRight, scaleRight, animateMoveRight(topCard)])
+        return SKAction.group([turnRight, scaleRight, animateMoveRight(topCard)])
         
     }
     
     func animateRightSwipeLeft(_ topCard: MenuCard) -> SKAction {
         
-        let turnLeft = SKAction.rotate(toAngle: topCard.gametype.rotation,
+        let turnLeft = SKAction.rotate(toAngle: topCard.gameType.rotation,
                                        duration: cardAnimationDuration)
         
         let scaleLeft = SKAction.scale(to: 1,
                                        duration: cardAnimationDuration)
         
-        return SKAction.sequence([turnLeft, scaleLeft, animateMoveRight(topCard).reversed()])
+        return SKAction.group([turnLeft, scaleLeft, animateMoveRight(topCard).reversed()])
         
     }
     
@@ -121,8 +121,8 @@ extension MenuScene {
     
     private func animateMoveLeft(_ downCard: MenuCard) -> SKAction {
         
-        return SKAction.moveBy(x: -(getfactor(0.04, max: 30) + downCard.size.width),
-                               y: getfactor(0.08, max: 60),
+        return SKAction.moveBy(x: -(getFactor(0.04, max: 30) + downCard.size.width),
+                               y: getFactor(0.08, max: 60),
                                duration: cardAnimationDuration)
         
     }
@@ -135,19 +135,19 @@ extension MenuScene {
         let scaleLeft = SKAction.scale(to: cardAnimationScale,
                                        duration: cardAnimationDuration)
         
-        return SKAction.sequence([turnLeft, scaleLeft, animateMoveLeft(downCard)])
+        return SKAction.group([turnLeft, scaleLeft, animateMoveLeft(downCard)])
         
     }
     
     func animateLeftSwipeRight(_ downCard: MenuCard) -> SKAction {
         
-        let turnRight = SKAction.rotate(toAngle: downCard.gametype.rotation,
+        let turnRight = SKAction.rotate(toAngle: downCard.gameType.rotation,
                                         duration: cardAnimationDuration)
         
         let scaleRight = SKAction.scale(to: 1,
                                         duration: cardAnimationDuration)
         
-        return SKAction.sequence([turnRight, scaleRight, animateMoveLeft(downCard).reversed()])
+        return SKAction.group([turnRight, scaleRight, animateMoveLeft(downCard).reversed()])
         
     }
 

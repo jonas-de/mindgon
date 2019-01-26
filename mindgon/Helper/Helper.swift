@@ -12,7 +12,7 @@ class Helper {
     
     /**
      function that names the system font depending on the weight
-     - Parameter weight: the weight of the form as UIFont.Weight
+     - Parameter weight: the weight of the font as UIFont.Weight
      - Returns: the name of the font
     */
     static func getSystemFontName(weight: UIFont.Weight) -> String{

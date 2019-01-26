@@ -11,7 +11,10 @@ import SpriteKit
 
 extension Notification.Name {
     
-    ///Notification to inform the `GameViewController` that he should present the menu
+    /**
+     Notification to inform the `GameViewController` that he should present the menu
+     - Warning: to do some cleanup after the game, the gametype must be delivered in in ther userInfo object (-> `GameViewController)
+    */
     static let showmenu = Notification.Name("showmenu")
     
     /**
