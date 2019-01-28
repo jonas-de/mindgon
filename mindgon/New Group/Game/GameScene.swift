@@ -192,8 +192,8 @@ class GameScene: Scene {
                                                      height: node.size.height))
         
         fillNode.fillColor = GameHelper.randomColor()
-        fillNode.strokeColor = .white
-        fillNode.lineWidth = nodeSize * 0.02
+        fillNode.strokeColor = fillNode.fillColor
+        fillNode.lineWidth = nodeSize * 0.01
         fillNode.isAntialiased = true
         fillNode.name = "fill"
         
@@ -300,7 +300,7 @@ class GameScene: Scene {
         
     }
     
-    func touchedWrongNode(atIndex i: Int) {
+    func endForRevive() {
         
         state = .preparerevive
         
@@ -687,7 +687,7 @@ class GameScene: Scene {
                             if node.contains(location) {
                                 
                                 giveFeedback(type: .wrong)
-                                touchedWrongNode(atIndex: touchedNode.getIndex())
+                                endForRevive()
                                 
                             }
                             

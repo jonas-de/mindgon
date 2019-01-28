@@ -38,3 +38,15 @@ extension Array {
     
 }
 
+//MARK: -
+
+extension SKLabelNode {
+    
+    func getDeltaTime(forGoal goal: CGFloat, maxDistance: CGFloat) -> TimeInterval {
+        
+        return TimeInterval(abs(goal - position.y) / maxDistance * 0.5)
+        
+    }
+    
+}
+

@@ -27,9 +27,9 @@ enum GameState {
 /**
  Represents the status of highlighting nodes after revive
  - ## cases
- - running
- - shouldStop
- - stop
+    - running
+    - shouldStop
+    - stop
  */
 enum HighlightingState {
     
@@ -47,6 +47,20 @@ enum HighlightingState {
 enum NodeState{
     
     case untouched, touched
+    
+}
+
+/**
+ Represents the state of the `timeLabel` in `TimeScene`
+    - ## cases
+        - no
+        - increase
+        - decrease
+        - decrease
+*/
+enum ChangingTimeState {
+    
+    case no, increase, decrease, reset, waitForDecrease, waitForIncrease
     
 }
 
