@@ -11,6 +11,6 @@ The goal is to tap at the fields in the order of appearing.
 
 
 ### Screenshots
-![menu](./screenshots/menu.png)
-![game](./screenshots/game.png)
-![revive](./screenshots/revive.png)
+![menu](./menu.png)
+![game](./game.png)
+![revive](./revive.png)
